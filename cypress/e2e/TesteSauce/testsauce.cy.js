@@ -102,5 +102,4 @@ describe('Suita 2', () => {
         cy.get('[data-test="title"]').should('be.visible');
         cy.get('[data-test="title"]').should('contain', 'Products');
     })
-
 })
