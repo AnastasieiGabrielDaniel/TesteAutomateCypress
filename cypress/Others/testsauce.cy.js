@@ -1,7 +1,7 @@
 describe('Suita 2', () => {
     
 //Test with incorect username or password
-    it('Incorrect login test', () => {
+    it('Incorect login test', () => {
 
         cy.visit('https://www.saucedemo.com/');
         cy.get('[data-test="username"]').type('standard_user');
