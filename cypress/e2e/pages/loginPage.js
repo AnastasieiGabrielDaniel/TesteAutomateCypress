@@ -11,17 +11,9 @@ class LoginPage{
         cy.visit('https://www.saucedemo.com/');
     }
 
-    failedlogin(){
-
-        this.elements.username().type('standard_user');
-        this.elements.password().type('wrong_password');
-        this.elements.loginButton().click();
-    }
-
-    login(){
-
-        this.elements.username().type('standard_user');
-        this.elements.password().type('secret_sauce');
+    login(username='standard_user', password='secret_sauce'){
+        this.elements.username().type(username);
+        this.elements.password().type(password);
         this.elements.loginButton().click();
     }
 }

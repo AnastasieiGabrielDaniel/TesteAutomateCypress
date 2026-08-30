@@ -1,9 +1,10 @@
 import { apiData } from "../../data/apiData";
+import { env } from "../../../../env";
 
 describe('My first API suite', () => {
 
     it('My first API test', () => {
-        cy.request(`https://www.omdbapi.com/?apikey=${apiData.apiKey}&t=${apiData.movieTitle}`)
+        cy.request(`https://www.omdbapi.com/?apikey=${env.apiKey}&t=${apiData.movieTitle}`)
         .then((response) => {
             expect(response.status).to.eq(200);
             expect(response.body).to.have.property('Title', apiData.movieTitle);

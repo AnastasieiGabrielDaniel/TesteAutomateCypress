@@ -12,7 +12,7 @@ describe('Login tests', () => {
 
     it('Incorrect login test', () => {
         loginPage.visit();
-        loginPage.failedlogin();
+        loginPage.login('standard_user', 'wrong_password');
         loginPage.elements.errorMessage().should('exist');
     })
 })

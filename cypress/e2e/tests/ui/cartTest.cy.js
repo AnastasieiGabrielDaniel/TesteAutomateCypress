@@ -1,5 +1,7 @@
 import LoginPage from "../../pages/loginPage";
 import CartPage from "../../pages/cartPage";
+import { inform, random } from "../../data/inform";
+import { faker } from '@faker-js/faker';
 
 describe('Cart tests', () => {
 
@@ -12,17 +14,16 @@ describe('Cart tests', () => {
         cy.url().should('include', 'inventory.html');
         cartPage.addToCart();
         cartPage.goToCart();
-        cy.get('[data-test="inventory-item-name"]').should('contain', 'Sauce Labs Bike Light');
-        cy.get('[data-test="title"]').should('contain', 'Your Cart');
+        cartPage.inventory().should('contain', inform.inventoryInfo);
+        cartPage.title().should('contain', inform.myCart);
         cartPage.checkout();
-        cy.get('[data-test="title"]').should('contain', 'Checkout: Your Information');
-        cartPage.fillform("Daniel", "Anastasiei", "12345");
+        cartPage.title().should('contain', inform.myInfo);
+        cartPage.fillform();
         cartPage.continue();
-        cy.get('[data-test="title"]').should('contain', 'Checkout: Overview');
-        cy.get('[data-test="inventory-item-name"]').should('contain', 'Sauce Labs Bike Light');
+        cartPage.title().should('contain', inform.overview);
+        cartPage.inventory().should('contain', inform.inventoryInfo);
         cartPage.finish();
-        cy.get('[data-test="title"]').should('contain', 'Checkout: Complete!');
-        cy.get('[data-test="complete-header"]').should('contain', 'Thank you for your order!')
+        cartPage.title().should('contain', inform.completed);
+        cartPage.complete().should('contain', inform.finalOrder)
     })
-
 })
