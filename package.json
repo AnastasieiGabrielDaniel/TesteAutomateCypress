@@ -4,5 +4,15 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.6.0"
+  },
+ "scripts": {
+  "cypress:open": "cypress open",
+
+  "test:ui": "cypress run --spec \"cypress/e2e/tests/ui/**/*.cy.js\"",
+  "test:api": "cypress run --spec \"cypress/e2e/tests/api/**/*.cy.js\"",
+
+  "test:all": "cypress run",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "npm run test:ui && npm run test:api"
   }
 }
