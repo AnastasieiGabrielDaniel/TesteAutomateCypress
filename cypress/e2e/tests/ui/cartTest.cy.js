@@ -1,7 +1,6 @@
 import LoginPage from "../../pages/loginPage";
 import CartPage from "../../pages/cartPage";
 import { inform, random } from "../../data/inform";
-import { faker } from '@faker-js/faker';
 
 describe('Cart tests', () => {
 
