@@ -1,9 +1,9 @@
-```yaml
 name: Cypress Tests Schedule
 
 on:
-    schedule:
-    - cron: "0 2 * * 1-5"
+  schedule:
+    - cron: "35 19 * * 1-5"
+  workflow_dispatch:
 
 jobs:
   cypress-run:
@@ -20,9 +20,10 @@ jobs:
         run: npm ci
 
       - name: Create env.js
+        env:
+          OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
         run: |
-          echo "export const env = { apiKey: '${{ secrets.OMDB_API_KEY }}' };" > env.js
+          echo "export const env = { apiKey: '$OMDB_API_KEY' };" > env.js
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
-```
