@@ -1,0 +1,28 @@
+```yaml
+name: Cypress Tests Schedule
+
+on:
+    schedule:
+    - cron: "0 2 * * 1-5"
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-24.04
+
+    env:
+      TERM: xterm
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create env.js
+        run: |
+          echo "export const env = { apiKey: '${{ secrets.OMDB_API_KEY }}' };" > env.js
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+```
